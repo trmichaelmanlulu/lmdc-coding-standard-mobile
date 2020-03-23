@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imports</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="lmdc-coding-standard-mobile">LMDC Coding Standard (Mobile)</h1>
+<h2 id="imports">Imports</h2>
+<h3 id="group-your-import-based-on-their-type-using-comments">1. Group your import based on their type using comments</h3>
+<pre class=" language-javascript"><code class="prism  language-javascript"><span class="token comment">// react modules</span>
+<span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Text<span class="token punctuation">,</span> View<span class="token punctuation">,</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-native'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// third party libraries</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Autocomplete<span class="token punctuation">,</span> Layout<span class="token punctuation">,</span> Icon <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@ui-kitten/components'</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="the-import-items-order-should-be-like-this">2. The import items order should be like this:</h3>
+<ul>
+<li>React modules</li>
+<li>Third party libraries</li>
+<li>Defined Modules
+<ul>
+<li>Styles</li>
+<li>Mixins</li>
+<li>Components</li>
+<li>Static</li>
+</ul>
+</li>
+</ul>
+<pre class=" language-javascript"><code class="prism  language-javascript"><span class="token comment">// react modules</span>
+<span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Text<span class="token punctuation">,</span> View<span class="token punctuation">,</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-native'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// third party libraries</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Autocomplete<span class="token punctuation">,</span> Layout<span class="token punctuation">,</span> Icon <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@ui-kitten/components'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// styles</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> styles <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./subscriptions-list-styles-android'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// mixins</span>
+<span class="token keyword">import</span> AppHeader <span class="token keyword">from</span> <span class="token string">'lmdc-mobile/src/mixins/app-header'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> AppContent <span class="token keyword">from</span> <span class="token string">'lmdc-mobile/src/mixins/app-content'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> AppRoundedCard <span class="token keyword">from</span> <span class="token string">'lmdc-mobile/src/mixins/app-rounded-card'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// components</span>
+<span class="token keyword">import</span> AppFooter <span class="token keyword">from</span> <span class="token string">'lmdc-mobile/src/modules/_shared/components/footer/AppFooter'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// static</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> SCENE <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'lmdc-mobile/src/static/enums'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> STRINGS <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'lmdc-mobile/src/static/strings'</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="absolute-path-instead-of-relative-path">3. Absolute path instead of relative path</h3>
+<p>Import paths needs to be an absolute path instead of relative path for code readability and maintainability. Using absolute path will  lessen the work to update the path when changing the location of your component.</p>
+<pre class=" language-javascript"><code class="prism  language-javascript"><span class="token comment">// relative path</span>
+<span class="token keyword">import</span> AppFooter <span class="token keyword">from</span> <span class="token string">'../../../../modules/_shared/components/footer/AppFooter'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// aboslute path</span>
+<span class="token keyword">import</span> AppFooter <span class="token keyword">from</span> <span class="token string">'lmdc-mobile/src/modules/_shared/components/footer/AppFooter'</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="use-the-index-mixin-when-importing-multiple-imxins">4. Use the index mixin when importing multiple imxins</h3>
+<pre class=" language-javascript"><code class="prism  language-javascript"><span class="token comment">// dont</span>
+<span class="token keyword">import</span> AppTextInput <span class="token keyword">from</span> <span class="token string">'lmdc-mobile/src/mixins/AppRoundedCard'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> AppDropdown <span class="token keyword">from</span> <span class="token string">'lmdc-mobile/src/mixins/AppTextInput'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> AppAutocomplete <span class="token keyword">from</span> <span class="token string">'lmdc-mobile/src/mixins/AppPrimaryButton'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// do</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> AppTextInput<span class="token punctuation">,</span> AppDropdown<span class="token punctuation">,</span> AppAutocomplete <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'lmdc-mobile/src/mixins/index'</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</body>
+
+</html>

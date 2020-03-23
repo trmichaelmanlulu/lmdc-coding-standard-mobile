@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="lmdc-coding-standard-mobile">LMDC Coding Standard (Mobile)</h1>
+<h2 id="template">Template</h2>
+<h3 id="use-these-3-elements-to-build-the-base-structure-of-every-page-screens">1. Use these 3 elements to build the base structure of every page screens</h3>
+<ul>
+<li>AppHeader</li>
+<li>AppContent</li>
+<li>AppFooter</li>
+</ul>
+<pre class=" language-javascript"><code class="prism  language-javascript"><span class="token comment">// dont</span>
+<span class="token operator">&lt;</span>View<span class="token operator">&gt;</span>
+	<span class="token operator">&lt;</span>View<span class="token operator">&gt;</span>
+		<span class="token comment">// header</span>
+	<span class="token operator">&lt;</span><span class="token operator">/</span>View<span class="token operator">&gt;</span>
+	<span class="token operator">&lt;</span>View<span class="token operator">&gt;</span>
+		<span class="token operator">&lt;</span>AppContent<span class="token operator">&gt;</span>
+			<span class="token comment">// content</span>
+		<span class="token operator">&lt;</span><span class="token operator">/</span>AppContent<span class="token operator">&gt;</span>
+	<span class="token operator">&lt;</span><span class="token operator">/</span>View<span class="token operator">&gt;</span>
+	<span class="token operator">&lt;</span>View<span class="token operator">&gt;</span>
+	    <span class="token comment">// footer</span>
+   <span class="token operator">&lt;</span><span class="token operator">/</span>View<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>View<span class="token operator">&gt;</span>
+
+<span class="token comment">// do</span>
+<span class="token operator">&lt;</span>View<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>AppHeader<span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>AppContent<span class="token operator">&gt;</span>
+        <span class="token comment">// content</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>AppContent<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>AppFooter<span class="token operator">/</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>View<span class="token operator">&gt;</span>
+</code></pre>
+<h3 id="use-the--view--tag-to-group-your-elements-view--div">2. Use the &lt; View &gt; tag to group your elements (View = div)</h3>
+<p>Think of a view tag as a div element in web development where its main purpose is to group multiple/unrelated elements inside a container.</p>
+<h3 id="if-element-attributes-is-more-than-3-separate-them-in-new-line">3. If element attributes is more than 3, separate them in new line</h3>
+<pre class=" language-javascript"><code class="prism  language-javascript"><span class="token comment">// dont</span>
+<span class="token operator">&lt;</span>AppTextInput value<span class="token operator">=</span><span class="token punctuation">{</span>petName<span class="token punctuation">}</span> onChangeText<span class="token operator">=</span><span class="token punctuation">{</span>text <span class="token operator">=&gt;</span> <span class="token function">onChange</span><span class="token punctuation">(</span>text<span class="token punctuation">,</span> <span class="token string">'petName'</span><span class="token punctuation">)</span><span class="token punctuation">}</span> required placeholder<span class="token operator">=</span><span class="token string">"Pet name"</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+
+<span class="token comment">// do</span>
+<span class="token operator">&lt;</span>AppTextInput
+    value<span class="token operator">=</span><span class="token punctuation">{</span>petName<span class="token punctuation">}</span>
+    placeholder<span class="token operator">=</span><span class="token string">"Pet name"</span>
+    required
+    onChangeText<span class="token operator">=</span><span class="token punctuation">{</span>text <span class="token operator">=&gt;</span> <span class="token function">onChange</span><span class="token punctuation">(</span>text<span class="token punctuation">,</span> <span class="token string">'petName'</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+<span class="token operator">/</span><span class="token operator">&gt;</span>
+</code></pre>
+<h3 id="element-attributes-order">4. Element attributes order</h3>
+<p>Element attributes order should be:</p>
+<ul>
+<li>Props that has dynamic value</li>
+<li>Props that has static value</li>
+<li>Element attribute that has no value</li>
+<li>Element methods</li>
+</ul>
+<pre class=" language-javascript"><code class="prism  language-javascript"><span class="token comment">// dont</span>
+<span class="token operator">&lt;</span>AppTextInput
+    placeholder<span class="token operator">=</span><span class="token string">"Pet name"</span>
+    accessibilityLabel<span class="token operator">=</span><span class="token string">"PetName"</span>
+    value<span class="token operator">=</span><span class="token punctuation">{</span>petName<span class="token punctuation">}</span>
+    onChangeText<span class="token operator">=</span><span class="token punctuation">{</span>text <span class="token operator">=&gt;</span> <span class="token function">onChange</span><span class="token punctuation">(</span>text<span class="token punctuation">,</span> <span class="token string">'petName'</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+    validations<span class="token operator">=</span><span class="token punctuation">{</span>contentErrors<span class="token punctuation">.</span>petName<span class="token punctuation">}</span>
+    required
+    textInputStyle<span class="token operator">=</span><span class="token punctuation">{</span>textInput<span class="token punctuation">}</span>
+    autoCapitalize<span class="token operator">=</span><span class="token string">"sentences"</span>
+<span class="token operator">/</span><span class="token operator">&gt;</span>
+
+<span class="token comment">// do</span>
+<span class="token operator">&lt;</span>AppTextInput
+    value<span class="token operator">=</span><span class="token punctuation">{</span>petName<span class="token punctuation">}</span>
+    validations<span class="token operator">=</span><span class="token punctuation">{</span>contentErrors<span class="token punctuation">.</span>petName<span class="token punctuation">}</span>
+    textInputStyle<span class="token operator">=</span><span class="token punctuation">{</span>textInput<span class="token punctuation">}</span>
+    autoCapitalize<span class="token operator">=</span><span class="token string">"sentences"</span>
+    placeholder<span class="token operator">=</span><span class="token string">"Pet name"</span>
+    accessibilityLabel<span class="token operator">=</span><span class="token string">"PetName"</span>
+    required
+    onChangeText<span class="token operator">=</span><span class="token punctuation">{</span>text <span class="token operator">=&gt;</span> <span class="token function">onChange</span><span class="token punctuation">(</span>text<span class="token punctuation">,</span> <span class="token string">'petName'</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+<span class="token operator">/</span><span class="token operator">&gt;</span>
+</code></pre>
+<h3 id="always-add-a-proptypes-and-defaultprops-to-any-component-that-receives-a-props-value">5. Always add a propTypes and defaultProps to any component that receives a props value</h3>
+<p>For example, on your AppTextInput.js mixin, declare your propTypes and defaultProps after the component style.</p>
+<pre class=" language-javascript"><code class="prism  language-javascript"><span class="token comment">// propTypes</span>
+AppTextInput<span class="token punctuation">.</span>propTypes <span class="token operator">=</span> <span class="token punctuation">{</span>
+    onChangeText<span class="token punctuation">:</span> PropTypes<span class="token punctuation">.</span>func<span class="token punctuation">.</span>isRequired<span class="token punctuation">,</span>
+    value<span class="token punctuation">:</span> PropTypes<span class="token punctuation">.</span>string<span class="token punctuation">.</span>isRequired<span class="token punctuation">,</span>
+    placeholder<span class="token punctuation">:</span> PropTypes<span class="token punctuation">.</span>string<span class="token punctuation">,</span>
+    textInputStyle<span class="token punctuation">:</span> PropTypes<span class="token punctuation">.</span>object<span class="token punctuation">,</span>
+    hidden<span class="token punctuation">:</span> PropTypes<span class="token punctuation">.</span>bool<span class="token punctuation">,</span>
+    accessibilityLabel<span class="token punctuation">:</span> PropTypes<span class="token punctuation">.</span>string<span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// defaultProps</span>
+AppTextInput<span class="token punctuation">.</span>defaultProps <span class="token operator">=</span> <span class="token punctuation">{</span>
+    placeholder<span class="token punctuation">:</span> <span class="token string">'Enter Here'</span><span class="token punctuation">,</span>
+    accessibilityLabel<span class="token punctuation">:</span> <span class="token string">'TextInput'</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="if-a-template-has-more-than-3-props-use-object-instead">6.  If a template has more than 3 props, use object instead</h3>
+<pre class=" language-javascript"><code class="prism  language-javascript"><span class="token comment">// dont</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function-variable function">Template</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> content<span class="token punctuation">,</span> onChange<span class="token punctuation">,</span> contentErrors <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment">// do</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function-variable function">Template</span> <span class="token operator">=</span> <span class="token punctuation">(</span>propsObj<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+   <span class="token comment">// propsObj.content</span>
+   <span class="token comment">// propsObj.onChange</span>
+   <span class="token comment">// propsObj.contentErrors</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</div>
+</body>
+
+</html>

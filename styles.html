@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Styles</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="lmdc-coding-standard-mobile">LMDC Coding Standard (Mobile)</h1>
+<h2 id="styles">Styles</h2>
+<h3 id="faqs">1. FAQs</h3>
+<ol>
+<li>
+<p><a href="https://stackoverflow.com/questions/34493372/what-is-the-default-unit-of-style-in-react-native">Default unit of style in React Native</a></p>
+</li>
+<li>
+<p><a href="https://medium.com/better-programming/styling-in-react-native-step-by-step-540f57411566">Styling in React Native</a></p>
+</li>
+</ol>
+<h3 id="global-styles-should-be-declared-first-before-the-component-styles">2. Global styles should be declared first before the component styles</h3>
+<pre class=" language-javascript"><code class="prism  language-javascript"><span class="token comment">// dont</span>
+<span class="token keyword">const</span> styles <span class="token operator">=</span> StyleSheet<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token comment">// component styles</span>
+  
+  <span class="token comment">//global styles</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// do</span>
+<span class="token keyword">const</span> styles <span class="token operator">=</span> StyleSheet<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token comment">//global styles</span>
+	
+  <span class="token comment">// component styles</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="make-you-style-name-more-specific-as-possible">3. Make you style name more specific as possible</h3>
+<p>We can follow this format when naming our styles</p>
+<pre><code>Format:
+&lt;adjectiveOfElement (optional)&gt;&lt;NameOfElelement&gt;&lt;PurposeOfElement&gt;
+
+// dont
+cardStyle
+cardBox
+
+// do
+mainCardContainer
+roundedCardContainer
+cardContainer
+</code></pre>
+<h3 id="initialize-your-styles-before-using-it-on-the-template.--order-of-style-constant-is-important.">4. Initialize your styles before using it on the template.  Order of style constant is important.</h3>
+<p>The order of style constant will follow the order of the style being used on the template.</p>
+<pre class=" language-javascript"><code class="prism  language-javascript"><span class="token comment">// dont</span>
+<span class="token operator">&lt;</span>View style<span class="token operator">=</span><span class="token punctuation">{</span>styles<span class="token punctuation">.</span>priceContainer<span class="token punctuation">}</span><span class="token operator">&gt;</span>
+	<span class="token comment">// ...</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>View<span class="token operator">&gt;</span>
+
+<span class="token comment">// do</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span>
+	cardsMainContainer<span class="token punctuation">,</span>
+	cardsContainer<span class="token punctuation">,</span>
+	priceContainer<span class="token punctuation">,</span>
+	descriptionContainer
+<span class="token punctuation">}</span> <span class="token operator">=</span> styles<span class="token punctuation">;</span>
+
+<span class="token operator">&lt;</span>View style<span class="token operator">=</span><span class="token punctuation">{</span>cardsMainContainer<span class="token punctuation">}</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>View style<span class="token operator">=</span><span class="token punctuation">{</span>cardsContainer<span class="token punctuation">}</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>View style<span class="token operator">=</span><span class="token punctuation">{</span>priceContainer<span class="token punctuation">}</span><span class="token operator">&gt;</span>
+	        <span class="token comment">// ...</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>View<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>View style<span class="token operator">=</span><span class="token punctuation">{</span>descriptionContainer<span class="token punctuation">}</span><span class="token operator">&gt;</span>
+	        <span class="token comment">// ...</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>View<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>View<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>View<span class="token operator">&gt;</span>
+</code></pre>
+<h3 id="separate-your-element-styles-based-on-their-type-and-should-follow-this-order">5. Separate your element styles based on their type and should follow this order</h3>
+<p>Always follow this order when styling your element. If an element has multiple style type, separate them with a comment</p>
+<ul>
+<li>Positioning
+<ul>
+<li>ex. relative, absolute, top, bottom, left, right, z-index</li>
+</ul>
+</li>
+<li>Display
+<ul>
+<li>ex. flex, flex values (justify-content, align-items) , block, inline, none</li>
+</ul>
+</li>
+<li>Typography
+<ul>
+<li>ex. font-size, font-family, line-height</li>
+</ul>
+</li>
+<li>Colors
+<ul>
+<li>ex. colors, background-color</li>
+</ul>
+</li>
+<li>Width &amp; Height
+<ul>
+<li>ex. width, height, min-width, min-height</li>
+</ul>
+</li>
+<li>Spacing
+<ul>
+<li>ex. padding, margin</li>
+</ul>
+</li>
+<li>Others
+<ul>
+<li>ex. border, border-raidus, overflow</li>
+</ul>
+</li>
+</ul>
+<pre class=" language-javascript"><code class="prism  language-javascript"><span class="token comment">// dont</span>
+    container<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+	    width<span class="token punctuation">:</span> <span class="token number">140</span><span class="token punctuation">,</span>
+	    height<span class="token punctuation">:</span> <span class="token number">140</span><span class="token punctuation">,</span>
+	    borderRadius<span class="token punctuation">:</span> <span class="token number">140</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span>
+	    position<span class="token punctuation">:</span> absolute<span class="token punctuation">,</span>
+	    left<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+	    top<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+	    alignSelf<span class="token punctuation">:</span> <span class="token string">'center'</span><span class="token punctuation">,</span>
+	    borderWidth<span class="token punctuation">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
+	    marginVertical<span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+	    overflow<span class="token punctuation">:</span> <span class="token string">'hidden'</span><span class="token punctuation">,</span>
+	    justifyContent<span class="token punctuation">:</span> <span class="token string">'flex-end'</span><span class="token punctuation">,</span>
+	    borderColor<span class="token punctuation">:</span> COLOR<span class="token punctuation">.</span>BORDER_PRIMARY<span class="token punctuation">,</span>
+	    backgroundColor<span class="token punctuation">:</span> <span class="token string">'white'</span><span class="token punctuation">,</span>
+	    fontSize<span class="token punctuation">:</span> <span class="token number">18</span><span class="token punctuation">,</span>
+	    fontFamily<span class="token punctuation">:</span> <span class="token string">'Lato'</span>
+    <span class="token punctuation">}</span>
+    
+<span class="token comment">// do</span>
+	container<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+		<span class="token comment">// position</span>
+		position<span class="token punctuation">:</span> absolute<span class="token punctuation">,</span>
+	    left<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+	    top<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+	    <span class="token comment">// display</span>
+	    justifyContent<span class="token punctuation">:</span> <span class="token string">'flex-end'</span><span class="token punctuation">,</span>
+	    alignSelf<span class="token punctuation">:</span> <span class="token string">'center'</span><span class="token punctuation">,</span>
+	    <span class="token comment">// typography</span>
+	    fontFamily<span class="token punctuation">:</span> <span class="token string">'Lato'</span><span class="token punctuation">,</span>
+		fontSize<span class="token punctuation">:</span> <span class="token number">18</span><span class="token punctuation">,</span>
+		<span class="token comment">// color</span>
+	    backgroundColor<span class="token punctuation">:</span> <span class="token string">'white'</span><span class="token punctuation">,</span>
+		borderColor<span class="token punctuation">:</span> COLOR<span class="token punctuation">.</span>BORDER_PRIMARY<span class="token punctuation">,</span>
+		<span class="token comment">// width and height</span>
+		width<span class="token punctuation">:</span> <span class="token number">140</span><span class="token punctuation">,</span>
+	    height<span class="token punctuation">:</span> <span class="token number">140</span><span class="token punctuation">,</span>
+	    <span class="token comment">// spacing</span>
+		marginVertical<span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+		<span class="token comment">// others</span>
+		borderWidth<span class="token punctuation">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
+		overflow<span class="token punctuation">:</span> <span class="token string">'hidden'</span>
+	<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="number-values-and-unit-on-style">6. Number values and unit on style</h3>
+<ul>
+<li>Number values should be divisible by 8 to make our application symmetrical.
+<ul>
+<li>Use 4 if 8 is not possible</li>
+</ul>
+</li>
+<li>Use % unit for width and heights. Use static value for the others.</li>
+</ul>
+</div>
+</body>
+
+</html>
